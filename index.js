@@ -37,11 +37,24 @@ app.get('/api/shorturl/:code', function(req, res) {
 
 app.post('/api/shorturl/', function(req, res) {
   const { url } = req.body;
-  const short_url = Math.ceil(Math.random() * 100000);
-  const result = {original_url: url, short_url};
-  shortenedLinks[short_url]=result;
-  console.log("Responded with ", result)
-  res.json(result);
+  
+  var urlPattern = /^(https?|ftp):\/\/www\.[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+
+  if (urlPattern.test(url)) {
+   
+    const short_url = Math.ceil(Math.random() * 100000);
+  
+    const result = {original_url: url, short_url};
+  
+    shortenedLinks[short_url]=result;
+  
+    console.log("Responded with ", result)
+    
+  } else {
+    res.json({ error: 'invalid url' });
+  }
+  
+  
 });
 
 
