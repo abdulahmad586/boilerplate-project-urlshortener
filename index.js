@@ -36,6 +36,7 @@ app.get('/api/shorturl/:code', function(req, res) {
 });
 
 app.post('/api/shorturl/', function(req, res) {
+  console.log(req.body);
   const { url } = req.body;
   
   var urlPattern = /^(https?|ftp):\/\/www\.[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
