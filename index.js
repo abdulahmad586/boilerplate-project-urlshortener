@@ -3,11 +3,14 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
+const bodyParser = require("body-parser");
+
 // Basic Configuration
 const port = process.env.PORT || 3000;
 
 let shortenedLinks = [];
 
+app.use(bodyParser.urlencoded({extended:false}))
 app.use(cors());
 
 app.use('/public', express.static(`${process.cwd()}/public`));
@@ -36,9 +39,7 @@ app.get('/api/shorturl/:code', function(req, res) {
 });
 
 app.post('/api/shorturl/', function(req, res) {
-  console.log(req.body);
-  res.json({er: JSON.stringify(req.body) })
-  return;
+  
   const { url } = req.body;
   
   var urlPattern = /^(https?|ftp):\/\/www\.[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
