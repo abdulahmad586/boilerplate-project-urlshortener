@@ -42,7 +42,7 @@ app.post('/api/shorturl/', function(req, res) {
   
   const { url } = req.body;
   
-  var urlPattern = /^(https?|http):\/\/www\.[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+  var urlPattern = /^(https?|ftp):\/\/www\.[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
 
   if (urlPattern.test(url)) {
    
