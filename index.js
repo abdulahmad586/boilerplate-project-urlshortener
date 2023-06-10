@@ -42,6 +42,8 @@ app.post('/api/shorturl/', function(req, res) {
   
   const { url } = req.body;
   
+  console.log(url)
+  
   var urlPattern = /^(https?|http):\/\/(?:www\.)?[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
 
   if (urlPattern.test(url)) {
