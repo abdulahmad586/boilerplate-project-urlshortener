@@ -44,7 +44,7 @@ app.post('/api/shorturl/', function(req, res) {
   
   console.log(url)
   
-  var urlPattern = /^(https?|http):\/\/(?:www\.)?[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+(?:\/[a-zA-Z0-9-]+)*\?(?:[a-zA-Z0-9-]+=[a-zA-Z0-9-]+&)*[a-zA-Z0-9-]+=[a-zA-Z0-9-]+$/;
+  var urlPattern = /^(https?|http):\/\/(?:www\.)?[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+(?:\/[a-zA-Z0-9-]+)*\/?(?:\?[a-zA-Z0-9-]+=[a-zA-Z0-9-]+(?:&[a-zA-Z0-9-]+=[a-zA-Z0-9-]+)*)?$/;
 
   if (urlPattern.test(url)) {
    
