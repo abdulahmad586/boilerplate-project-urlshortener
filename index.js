@@ -6,7 +6,7 @@ const app = express();
 // Basic Configuration
 const port = process.env.PORT || 3000;
 
-const shortenedLinks = [];
+let shortenedLinks = [];
 
 app.use(cors());
 
@@ -35,11 +35,12 @@ app.get('/api/shorturl/:code', function(req, res) {
   
 });
 
-app.post('/api/shorturl', function(req, res) {
+app.post('/api/shorturl/', function(req, res) {
   const { url } = req.body;
-  const short_url = Math.ceil(Math.random() * 100000)
+  const short_url = Math.ceil(Math.random() * 100000);
   const result = {original_url: url, short_url};
-  shortenedLinks[short_url]=result
+  shortenedLinks[short_url]=result;
+  console.log("Responded with ", result)
   res.json(result);
 });
 
